@@ -39,7 +39,7 @@ body {
   /* Use Helvetica Neue LT 55 Roman if available, then fall back to serif, Helvetica, or Arial */
   font-family: "Helvetica Neue LT 55 Roman", serif, Helvetica, Arial;
   color: #333;
-  background: linear-gradient(135deg, #fffbe6 0%, #fff 100%);
+  background: #fff;
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -67,7 +67,7 @@ body {
 
 /* chat window */
 .chatbox {
-  margin: 40px 0;
+  margin: 48px 0 0 0;
 }
 
 .chat-window {
@@ -77,7 +77,9 @@ body {
   font-size: 18px;
   line-height: 1.5;
   overflow-y: auto;
-  background: #fafafa;
+  background: #fffbe6;
+  box-shadow: none;
+  color: #333;
   white-space: pre-line;
   display: flex;
   flex-direction: column;
@@ -87,27 +89,36 @@ body {
 /* User message: align right */
 .user-msg {
   align-self: flex-end;
-  background: #e0f7fa;
+  background: linear-gradient(90deg, #e0f7fa 80%, #e3a535 100%);
   color: #222;
-  padding: 10px 16px;
-  border-radius: 18px 18px 4px 18px;
+  padding: 12px 18px 12px 22px;
+  border-radius: 22px 22px 8px 22px;
   max-width: 70%;
-  margin-bottom: 2px;
+  margin-bottom: 4px;
   text-align: right;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 2px 8px rgba(227, 165, 53, 0.1);
+  font-size: 1.08em;
+  font-style: italic;
+  letter-spacing: 0.01em;
+  transition: background 0.3s;
 }
 
 /* Bot message: align left */
+/* Bot message: align left */
 .bot-msg {
   align-self: flex-start;
-  background: #fffde7;
+  background: linear-gradient(90deg, #fffde7 80%, #e3a535 100%);
   color: #444;
-  padding: 10px 16px;
-  border-radius: 18px 18px 18px 4px;
+  padding: 12px 22px 12px 18px;
+  border-radius: 22px 22px 22px 8px;
   max-width: 70%;
-  margin-bottom: 2px;
+  margin-bottom: 4px;
   text-align: left;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 2px 8px rgba(227, 165, 53, 0.1);
+  font-size: 1.08em;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  transition: background 0.3s;
 }
 /* messages */
 .msg {
@@ -128,6 +139,9 @@ body {
   display: flex;
   gap: 12px;
   margin-top: 16px;
+  background: #fff;
+  border-radius: 0 0 18px 18px;
+  box-shadow: none;
 }
 
 .chat-form input {
@@ -136,6 +150,10 @@ body {
   border: 2px solid #e3a535;
   font-size: 18px;
   font-family: inherit;
+  border-radius: 8px;
+  background: #fff;
+  color: #222;
+  box-shadow: 0 1px 4px rgba(255, 0, 59, 0.06);
 }
 
 .chat-form input:focus {

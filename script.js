@@ -3,9 +3,6 @@ const chatForm = document.getElementById("chatForm");
 const userInput = document.getElementById("userInput");
 const chatWindow = document.getElementById("chatWindow");
 
-// Set an initial welcome message
-chatWindow.textContent = "👋 Hello! How can I help you today?";
-
 // Store the conversation history as an array of messages
 // Each message is an object: { role: "user" | "assistant" | "system", content: "..." }
 const conversationHistory = [
@@ -14,12 +11,15 @@ const conversationHistory = [
     content:
       "You are a helpful assistant for L'Oréal product questions. Answer in a friendly and informative way. Do not answer any questions unrelated to L'oréal products. No Swearing or inappropriate language. Keep your responses concise and relevant to the user's query in a friendly way that is inviting and helpful.",
   },
+  {
+    role: "assistant",
+    content: "Welcome to the L'Oréal Chatbot! How can I help you today?",
+  },
 ];
 
 // This function sends the conversation history to the Cloudflare Worker and gets a response
 async function getOpenAIResponse(message) {
-  // Add the user's new message to the conversation history
-  conversationHistory.push({ role: "user", content: message });
+  // Do NOT add the user's message here; it is already added in the submit handler
 
   // The endpoint for your Cloudflare Worker
   const endpoint = "https://loreal-worker.cannonb5.workers.dev/";
@@ -80,7 +80,7 @@ function renderConversation() {
     if (msg.role === "user") {
       html += `<div class="user-msg"><strong>You:</strong> ${msg.content}</div>`;
     } else if (msg.role === "assistant") {
-      html += `<div class="bot-msg"><strong>Assistant:</strong> ${msg.content}</div>`;
+      html += `<div class="bot-msg">${msg.content}</div>`;
     }
   }
   chatWindow.innerHTML = html;
@@ -94,12 +94,15 @@ chatForm.addEventListener("submit", async (e) => {
   // Get the user's message
   const message = userInput.value;
 
-  // Show the user's message and loading animation (but don't add user message to history here)
+  // Add the user's message to the conversation history and show it immediately
+  conversationHistory.push({ role: "user", content: message });
   renderConversation();
+
+  // Show a loading animation for the assistant
   chatWindow.innerHTML += `<div class="bot-msg"><span class="loading-dots"><span></span><span></span><span></span></span> Assistant is typing...</div>`;
   chatWindow.scrollTop = chatWindow.scrollHeight;
 
-  // Get the assistant's response from OpenAI (this will add both user and assistant messages to the history)
+  // Get the assistant's response from OpenAI (this will add the assistant message to the history)
   await getOpenAIResponse(message);
 
   // Re-render the conversation with the new assistant reply
