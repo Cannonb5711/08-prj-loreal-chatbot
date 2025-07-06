@@ -1,0 +1,9 @@
+/* L'Oreal Royal font-face example. You need the actual font file (woff2, woff, ttf, etc) in the fonts folder. */
+@font-face {
+  font-family: "Loreal Royal";
+  src: url("LorealRoyal.woff2") format("woff2"),
+    url("LorealRoyal.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}

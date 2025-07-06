@@ -12,14 +12,33 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap"
       rel="stylesheet"
     />
+    <!-- Add the L'Oreal Royal font if you have the font file. Example below uses local font file in 'fonts' folder. -->
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="fonts/loreal-royal.css" />
   </head>
 
   <body>
     <div class="page-wrapper">
       <!------- Header / Branding ------->
       <header class="site-header">
-        <h1 class="site-title">Smart Product Advisor</h1>
+        <div
+          class="branding"
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 18px;
+          "
+        >
+          <img
+            src="https://1000logos.net/wp-content/uploads/2022/04/LOreal-logo.png"
+            alt="L'Oréal Logo"
+            style="height: 90px; width: auto; display: block"
+          />
+          <h1 class="site-title" style="margin: 0; font-size: 2rem">
+            Smart Product & Routine Assistant
+          </h1>
+        </div>
       </header>
 
       <!------- Chat Area ------->
@@ -49,7 +68,7 @@
 
       <!------- Footer Links ------->
       <footer class="site-footer">
-        <p>&copy; 2025 Company Name. All rights reserved.</p>
+        <p>&copy; 2025 L'Oréal. All rights reserved.</p>
         <nav>
           <!-- These URLs are placeholders -->
           <a href="#">Privacy Policy</a>

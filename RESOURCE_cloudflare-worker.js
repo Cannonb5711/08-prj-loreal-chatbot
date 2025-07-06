@@ -15,7 +15,7 @@ export default {
     }
 
     const apiKey = env.OPENAI_API_KEY; // Make sure to name your secret OPENAI_API_KEY in the Cloudflare Workers dashboard
-    const apiUrl = 'https://api.openai.com/v1/chat/completions';
+    const apiUrl = 'https://loreal-worker.cannonb5.workers.dev/';
     const userInput = await request.json();
 
     const requestBody = {
