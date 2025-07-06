@@ -39,6 +39,8 @@ body {
   /* Use Helvetica Neue LT 55 Roman if available, then fall back to serif, Helvetica, or Arial */
   font-family: "Helvetica Neue LT 55 Roman", serif, Helvetica, Arial;
   color: #333;
+  background: linear-gradient(135deg, #fffbe6 0%, #fff 100%);
+  min-height: 100vh;
   display: flex;
   justify-content: center;
 }
@@ -52,6 +54,9 @@ body {
 .site-header {
   text-align: center;
   padding-top: 50px;
+}
+.branding {
+  margin-bottom: 8px;
 }
 
 .site-title {
